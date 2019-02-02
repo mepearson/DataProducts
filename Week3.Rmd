@@ -1,0 +1,31 @@
+---
+title: "Data Products Week 3"
+author: "M Pearson"
+date: "January 30, 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(plotly)
+library(dplyr)
+```
+
+## R Markdown
+
+This presentation looks at the Air Passengers Data set from R that tracked Air Passenger Data from 1949 to 1961
+
+## Air Passenger data plotted with plot_ly
+
+```{r plotly}
+ ap <-  plot_ly( x =~ time(AirPassengers), y =~ AirPassengers, type="scatter", mode="lines" )
+ap
+```
+
+## Time series decomposition of Air Passenger Data with stl function
+
+```{r seasonal}
+sf <- stl(AirPassengers, s.window="periodic")
+plot(sf) 
+```
+
